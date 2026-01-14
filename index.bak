@@ -8,7 +8,7 @@
         :root { --bg: #0a0a0a; --green: #00ff41; --dim-green: rgba(0, 255, 65, 0.15); --text: #cccccc; --warning: #ffbd2e; }
         body { background: var(--bg); color: var(--text); font-family: 'Fira Code', 'Courier New', monospace; margin: 0; padding: 20px; line-height: 1.5; }
         .container { max-width: 1000px; margin: 0 auto; }
-
+        
         .terminal { background: #000; border: 1px solid #333; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); overflow: hidden; margin-bottom: 40px; }
         .top-bar { background: #222; padding: 12px; display: flex; gap: 8px; border-bottom: 1px solid #333; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -22,7 +22,7 @@
         .card { background: #111; border: 1px solid #222; padding: 20px; border-radius: 8px; position: relative; }
         .card h2 { color: var(--green); margin-top: 0; font-size: 1.2rem; }
         .badge { background: var(--warning); color: #000; font-size: 10px; padding: 2px 6px; border-radius: 4px; position: absolute; top: 20px; right: 20px; font-weight: bold; }
-
+        
         .btn { display: inline-block; background: var(--green); color: #000; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 15px; font-size: 12px; }
         .install-box { background: #161616; padding: 25px; border-radius: 8px; border-left: 4px solid var(--green); }
         code { background: #000; padding: 4px 8px; border-radius: 4px; color: var(--warning); display: block; margin: 10px 0; }
@@ -32,7 +32,7 @@
 
 <div class="container">
     <header style="text-align: center; margin-bottom: 40px;">
-        <img src="grimreapertoolslogo.png" alt="Grim Reaper Tools" width="398" height="126" style="display: block; margin: 0 auto 10px auto;">
+        <h1 style="color: var(--green); font-size: 2.5rem; margin-bottom: 5px;">GRIM REAPER TOOLS</h1>
         <p style="color: #666;">Advanced System Utilities for FreeBSD & macOS</p>
     </header>
 
@@ -63,7 +63,7 @@
         <h3 style="margin-top:0; color: #fff;">Guida all'installazione (Homebrew)</h3>
         <p>Aggiungi il repository ufficiale:</p>
         <code>brew tap antoniomalara301289/tap</code>
-
+        
         <p>Installa la shell (macOS):</p>
         <code>brew install grsh</code>
     </div>
@@ -75,7 +75,7 @@
 
 <script>
     const termData = [
-        { cmd: "grsh --version", out: "grsh v0.1.0\nReaper is Watching you! 😈" },
+        { cmd: "grsh --version", out: "grsh v0.1.0\nStatus: Watching you! 😈" },
         { cmd: "dir /space", out: "PATH: /root\n[DIR] .npm      156.711.054  ■■■■■■■■■■■■■■■■■■■■\n[DIR] .cargo     66.530.834  ■■■■■■■■\n      php.core   37.527.552  ■■■■" }
     ];
 
@@ -86,13 +86,13 @@
             line.innerHTML = `<span style="color:var(--green)">➜ </span><span style="color:#fff"></span><span class="cursor"></span>`;
             container.appendChild(line);
             const cmdSpan = line.querySelectorAll('span')[1];
-
+            
             for (let char of item.cmd) {
                 cmdSpan.textContent += char;
                 await new Promise(r => setTimeout(r, 50));
             }
             line.querySelector('.cursor').remove();
-
+            
             const out = document.createElement('div');
             out.className = 'output';
             out.textContent = item.out;
